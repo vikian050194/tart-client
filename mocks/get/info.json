@@ -1,0 +1,11 @@
+{
+    "statusCode": 200,
+    "data": {
+        "dirs": [
+            "aaa",
+            "bbb",
+            "ccc"
+        ],
+        "files": []
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "mocha": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "impliedStrict": true
+      },
+      "sourceType": "module",
+      "requireConfigFile": false
+  },
+  "rules": {
+      "quotes": [ "error", "double" ],
+      "semi": [ "error", "always" ],
+      "indent": [ "error", 4, { "SwitchCase": 1 } ],
+      "no-multiple-empty-lines": [ "error", { "max": 1 } ],
+      "linebreak-style": [ "error", "unix"],
+      "no-console": "warn",
+      "comma-dangle": ["error", "never"],
+      "no-debugger": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["actions", "./src/js/actions"],
+          ["api", "./src/js/api"],
+          ["componente", "./src/js/componente"],
+          ["middlewares", "./src/js/middlewares"],
+          ["models", "./src/js/models"],
+          ["reducers", "./src/js/reducers"],
+          ["store", "./src/js/store"],
+          ["utils", "./src/js/utils"]
+        ],
+        "extensions": [".js"]
+      },
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  }
+}

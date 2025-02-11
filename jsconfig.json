@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src/js",
+        "paths": {
+            "actions": ["actions"],
+            "api": ["api"],
+            "componente": ["componente"],
+            "middlewares": ["middlewares"],
+            "models": ["models"],
+            "reducers": ["reducers"],
+            "store": ["store"],
+            "utils": ["utils"],
+        }
+    },
+    "include": [
+        "./src/js/**/*.js"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "tart",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server",
+    "dev": "webpack -w",
+    "build": "webpack",
+    "release": "webpack --config webpack.production.config.js",
+    "test": "mocha './tests/**/*-tests.js' --require @babel/register",
+    "cover": "nyc --reporter=html npm run test"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.26.4",
+    "@babel/core": "7.26.0",
+    "@babel/eslint-parser": "7.25.9",
+    "@babel/preset-env": "7.26.0",
+    "@babel/register": "7.25.9",
+    "babel-loader": "9.2.1",
+    "css-loader": "6.11.0",
+    "eslint": "8.57.1",
+    "eslint-webpack-plugin": "4.2.0",
+    "fandom": "0.11.0",
+    "file-loader": "6.2.0",
+    "mini-css-extract-plugin": "2.9.2",
+    "mocha": "10.8.2",
+    "nyc": "15.1.0",
+    "resolve-url-loader": "5.0.0",
+    "url-loader": "4.1.1",
+    "webpack": "5.97.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "4.15.2",
+    "webpack-merge": "5.10.0"
+  }
+}
