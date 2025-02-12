@@ -1,6 +1,6 @@
 import { Builder } from "fandom";
 
-import Item from "./Item";
+import Button from "./Button";
 import { fetchItemsAction, undoPathAndFetchItemsAction, updatePathAndFetchItemsAction } from "actions";
 
 export class ItemsList {
@@ -10,18 +10,18 @@ export class ItemsList {
         dispatch(fetchItemsAction());
     }
 
-    describe(items) {
+    describe({ items }) {
         const onClick = (value) => this.dispatch(updatePathAndFetchItemsAction(value));
         const onBack = () => this.dispatch(undoPathAndFetchItemsAction());
 
         const props = { value: "< Back", onClick: onBack };
-        const i = new Item();
+        const i = new Button();
         const im = i.describe(props);
         this.builder.push(im);
 
         for (let dir of items.dirs) {
             const props = { value: dir, onClick };
-            const i = new Item();
+            const i = new Button();
             const im = i.describe(props);
             this.builder.push(im);
         }

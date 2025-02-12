@@ -7,7 +7,6 @@ import {
     logger,
     thunk
 } from "middlewares";
-// import { compose } from "utils";
 import { createAction, types } from "actions";
 import { createStore } from "./createStore";
 

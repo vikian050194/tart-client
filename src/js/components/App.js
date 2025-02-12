@@ -1,5 +1,6 @@
 import { Builder, replace, convert } from "fandom";
 import { ItemsList } from "./ItemsList";
+import { Picture } from "./Picture";
 import { configureStore } from "store";
 import { throttle, LocalStorage } from "utils";
 
@@ -18,7 +19,8 @@ const App = ($root) => {
     }, 1000));
 
     const components = {
-        items: new ItemsList(store.dispatch)
+        items: new ItemsList(store.dispatch),
+        image: new Picture(store.dispatch)
     };
 
     const builder = new Builder();
@@ -36,8 +38,8 @@ const App = ($root) => {
 
     const onUpdate = (currentState) => {
         for (const key in components) {
-            const substate = currentState[key];
-            const model = components[key].describe(substate);
+            // const substate = currentState[key];
+            const model = components[key].describe(currentState);
             const elements = convert(model);
             replace(document.getElementById(key), elements);
         }
