@@ -7,7 +7,7 @@ const onFail = (error) => createAction(types.FETCH_LIST_ERROR)(error);
 
 export const fetchItemsAction = () => {
     return (dispatch, getState) => {
-        const path = [...getState().items.path];
+        const path = [...getState().path];
         api.getItems(path)
             .then((data) => {
                 dispatch(onSuccess({
@@ -22,7 +22,7 @@ export const fetchItemsAction = () => {
 
 export const updatePathAndFetchItemsAction = (dir) => {
     return (dispatch, getState) => {
-        const path = [...getState().items.path, dir];
+        const path = [...getState().path, dir];
         api.getItems(path)
             .then((data) => {
                 dispatch(onSuccess({
@@ -37,7 +37,7 @@ export const updatePathAndFetchItemsAction = (dir) => {
 
 export const undoPathAndFetchItemsAction = () => {
     return (dispatch, getState) => {
-        const path = getState().items.path.slice(0, -1);
+        const path = getState().path.slice(0, -1);
         api.getItems(path)
             .then((data) => {
                 dispatch(onSuccess({

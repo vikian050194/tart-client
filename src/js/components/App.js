@@ -1,5 +1,5 @@
 import { Builder, replace, convert } from "fandom";
-import { ItemsList } from "./ItemsList";
+import { Directories } from "./Directories";
 import { Picture } from "./Picture";
 import { configureStore } from "store";
 import { throttle, LocalStorage } from "utils";
@@ -16,12 +16,12 @@ const App = ($root) => {
     const store = configureStore({ ...initialState, ...persistedState });
 
     store.subscribe(throttle(() => {
-        const { items } = store.getState();
-        LocalStorage.set("state", { items });
+        const { dirs, files, path } = store.getState();
+        LocalStorage.set("state", { dirs, files, path });
     }, 1000));
 
     const components = {
-        items: new ItemsList(store.dispatch),
+        items: new Directories(store.dispatch),
         image: new Picture(store.dispatch),
         counter: new Counter(store.dispatch)
     };

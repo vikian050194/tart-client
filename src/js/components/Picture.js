@@ -9,7 +9,7 @@ export class Picture {
         this.dispatch = dispatch;
     }
 
-    describe({ items }) {
+    describe({ files, path }) {
         const onPrevious = () => this.dispatch(createAction(types.PREVIOUS_IMAGE)());
         const onNext = () => this.dispatch(createAction(types.NEXT_IMAGE)());
 
@@ -21,8 +21,8 @@ export class Picture {
         const nextModel = next.describe({ value: "Next", onClick: onNext });
         this.builder.push(nextModel);
 
-        if (items.files.length > 0) {
-            const src = `api/data/${items.path.join("/")}/${items.files[items.index]}`;
+        if (files.items.length > 0) {
+            const src = `api/data/${path.join("/")}/${files.items[files.index]}`;
             this.builder.just("img", { src });
         }
 

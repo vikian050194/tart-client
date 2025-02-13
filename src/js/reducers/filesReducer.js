@@ -2,27 +2,23 @@ import { types } from "actions";
 
 const defaultState = {
     index: 0,
-    path: [],
-    dirs: [],
-    files: []
+    items: []
 };
 
-export const listReducer = (previousState = defaultState, action) => {
+export const filesReducer = (previousState = defaultState, action) => {
     switch (action.type) {
         case types.FETCH_LIST_SUCCESS: {
             return {
-                ...previousState,
-                path: action.value.path,
-                dirs: action.value.dirs,
-                files: action.value.files
+                items: action.value.files,
+                index: 0
             };
         }
         case types.NEXT_IMAGE: {
             let nextIndex = previousState.index + 1;
-            if (previousState.files.length === 0) {
+            if (previousState.items.length === 0) {
                 nextIndex = 0;
             }
-            if (nextIndex === previousState.files.length) {
+            if (nextIndex === previousState.items.length) {
                 nextIndex = 0;
             }
             return {
@@ -32,7 +28,7 @@ export const listReducer = (previousState = defaultState, action) => {
         }
         case types.PREVIOUS_IMAGE: {
             let nextIndex = previousState.index - 1;
-            if (previousState.files.length === 0) {
+            if (previousState.items.length === 0) {
                 nextIndex = 0;
             }
             return {

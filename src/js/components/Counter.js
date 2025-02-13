@@ -6,9 +6,9 @@ export class Counter {
         this.dispatch = dispatch;
     }
 
-    describe({ items }) {
-        const index = items.files.length > 0 ? items.index + 1 : 0;
-        const length = items.files.length;
+    describe({ files }) {
+        const index = files.items.length > 0 ? files.index + 1 : 0;
+        const length = files.items.length;
         this.builder.span().text(`${index}/${length}`).close();
         return this.builder.done();
     }

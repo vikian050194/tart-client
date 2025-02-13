@@ -1,4 +1,6 @@
-export { listReducer } from "./listReducer";
+export * from "./dirsReducer";
+export * from "./filesReducer";
+export * from "./pathReducer";
 
 export const combineReducers = (reducers) => {
     return function (previousState, action) {

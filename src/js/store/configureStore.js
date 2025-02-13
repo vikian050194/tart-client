@@ -1,6 +1,8 @@
 import {
     combineReducers,
-    listReducer
+    dirsReducer,
+    filesReducer,
+    pathReducer
 } from "reducers";
 import {
     applyMiddleware,
@@ -16,7 +18,9 @@ const defaultState = {
 
 export const configureStore = (initialState = {}) => {
     const reducer = combineReducers({
-        items: listReducer
+        dirs: dirsReducer,
+        files: filesReducer,
+        path: pathReducer
     });
     const state = { ...defaultState, ...initialState };
     const middlewares = [
