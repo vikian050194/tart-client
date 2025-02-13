@@ -3,8 +3,10 @@ import { ItemsList } from "./ItemsList";
 import { Picture } from "./Picture";
 import { configureStore } from "store";
 import { throttle, LocalStorage } from "utils";
+import { Counter } from "./Counter";
 
 const App = ($root) => {
+    $root.classList.add("container");
 
     var initialState = {
         // TODO does it make sense to use initial state?
@@ -20,19 +22,31 @@ const App = ($root) => {
 
     const components = {
         items: new ItemsList(store.dispatch),
-        image: new Picture(store.dispatch)
+        image: new Picture(store.dispatch),
+        counter: new Counter(store.dispatch)
     };
 
+    // const builder = new Builder();
+
+    // for (const key in components) {
+    //     builder.div({ id: key }).close();
+    // }
+
+    // const containers = builder.done();
+    // const domElements = convert(containers);
+
+    // replace($root, domElements);
     const builder = new Builder();
 
-    for (const key in components) {
-        builder.div({ id: key }).close();
-    }
+    builder.open("header").div({ id: "items" }).close(2);
+    builder.open("main");
 
-    const containers = builder.done();
-    const domElements = convert(containers);
+    builder.div({ id: "image" }).close();
 
-    replace($root, domElements);
+    builder.close();
+    builder.open("footer").div({ id: "counter" }).close(2);
+
+    replace($root, convert(builder.done()));
 
     const storeSnapshot = store.getState();
 
