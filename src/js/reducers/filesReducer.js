@@ -13,6 +13,23 @@ export const filesReducer = (previousState = defaultState, action) => {
                 index: 0
             };
         }
+        case types.FIRST_IMAGE: {
+            let nextIndex = 0;
+            return {
+                ...previousState,
+                index: nextIndex
+            };
+        }
+        case types.PREVIOUS_IMAGE: {
+            let nextIndex = previousState.index - 1;
+            if (previousState.items.length === 0) {
+                nextIndex = 0;
+            }
+            return {
+                ...previousState,
+                index: nextIndex
+            };
+        }
         case types.NEXT_IMAGE: {
             let nextIndex = previousState.index + 1;
             if (previousState.items.length === 0) {
@@ -26,10 +43,10 @@ export const filesReducer = (previousState = defaultState, action) => {
                 index: nextIndex
             };
         }
-        case types.PREVIOUS_IMAGE: {
-            let nextIndex = previousState.index - 1;
-            if (previousState.items.length === 0) {
-                nextIndex = 0;
+        case types.LAST_IMAGE: {
+            let nextIndex = 0;
+            if (previousState.items.length > 0) {
+                nextIndex = previousState.items.length - 1;
             }
             return {
                 ...previousState,

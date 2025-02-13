@@ -1,16 +1,17 @@
 import { Builder, replace, convert } from "fandom";
 import { Directories } from "./Directories";
-import { Picture } from "./Picture";
+import { Image } from "./Image";
 import { configureStore } from "store";
 import { throttle, LocalStorage } from "utils";
 import { Counter } from "./Counter";
+import { Navigation } from "./Navigation";
 
 const App = ($root) => {
     $root.classList.add("container");
 
     var initialState = {
         // TODO does it make sense to use initial state?
-        // items: {}
+        // dirs: {}
     };
     const persistedState = LocalStorage.get("state");
     const store = configureStore({ ...initialState, ...persistedState });
@@ -21,8 +22,9 @@ const App = ($root) => {
     }, 1000));
 
     const components = {
-        items: new Directories(store.dispatch),
-        image: new Picture(store.dispatch),
+        dirs: new Directories(store.dispatch),
+        navigation: new Navigation(store.dispatch),
+        image: new Image(store.dispatch),
         counter: new Counter(store.dispatch)
     };
 
@@ -38,7 +40,10 @@ const App = ($root) => {
     // replace($root, domElements);
     const builder = new Builder();
 
-    builder.open("header").div({ id: "items" }).close(2);
+    builder.open("header");
+    builder.div({ id: "dirs" }).close();
+    builder.div({ id: "navigation" }).close();
+    builder.close();
     builder.open("main");
 
     builder.div({ id: "image" }).close();
