@@ -22,6 +22,9 @@ export const filesReducer = (previousState = defaultState, action) => {
         }
         case types.PREVIOUS_IMAGE: {
             let nextIndex = previousState.index - 1;
+            if (nextIndex < 0) {
+                nextIndex = previousState.items.length - 1;
+            }
             if (previousState.items.length === 0) {
                 nextIndex = 0;
             }
