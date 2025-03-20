@@ -1,6 +1,8 @@
 import { Builder, replace, convert } from "fandom";
+import { Dates } from "./Dates";
 import { Directories } from "./Directories";
 import { Image } from "./Image";
+import { fetchItemsAction } from "actions";
 import { configureStore } from "store";
 import { throttle, LocalStorage } from "utils";
 import { Counter } from "./Counter";
@@ -22,6 +24,7 @@ const App = ($root) => {
     }, 1000));
 
     const components = {
+        date: new Dates(store.dispatch),
         dirs: new Directories(store.dispatch),
         navigation: new Navigation(store.dispatch),
         image: new Image(store.dispatch),
@@ -38,10 +41,14 @@ const App = ($root) => {
     // const domElements = convert(containers);
 
     // replace($root, domElements);
+
     const builder = new Builder();
 
     builder.open("header");
     builder.div({ id: "dirs" }).close();
+    builder.just("hr");
+    builder.div({ id: "date" }).close();
+    builder.just("hr");
     builder.div({ id: "navigation" }).close();
     builder.close();
     builder.open("main");
@@ -67,6 +74,8 @@ const App = ($root) => {
     store.subscribe(onUpdate);
 
     onUpdate(storeSnapshot);
+
+    store.dispatch(fetchItemsAction());
 };
 
 export default App;

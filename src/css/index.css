@@ -21,7 +21,8 @@ header {
     top: 0px;
     padding: 16px 0;
     background: white;
-    display: flex;
+    /* display: flex; */
+    display: block;
     justify-content: space-between;
 }
 

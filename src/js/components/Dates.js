@@ -1,24 +1,18 @@
 import { Builder } from "fandom";
 
 import Button from "./Button";
-import { undoPathAndFetchItemsAction, updatePathAndFetchItemsAction } from "actions";
+import { updatePathAndFetchItemsAction } from "actions";
 
-export class Directories {
+export class Dates {
     constructor(dispatch) {
         this.builder = new Builder();
         this.dispatch = dispatch;
     }
 
-    describe({ dirs }) {
+    describe({ date }) {
         const onClick = (value) => this.dispatch(updatePathAndFetchItemsAction(value));
-        const onBack = () => this.dispatch(undoPathAndFetchItemsAction());
 
-        const props = { value: "< Back", onClick: onBack };
-        const i = new Button();
-        const im = i.describe(props);
-        this.builder.push(im);
-
-        for (let dir of dirs) {
+        for (let dir of date.possible.years) {
             const props = { value: dir, onClick };
             const i = new Button();
             const im = i.describe(props);

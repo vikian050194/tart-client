@@ -1,3 +1,4 @@
+export * from "./dateReducer";
 export * from "./dirsReducer";
 export * from "./filesReducer";
 export * from "./pathReducer";

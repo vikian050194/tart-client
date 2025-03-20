@@ -1,5 +1,6 @@
 import {
     combineReducers,
+    dateReducer,
     dirsReducer,
     filesReducer,
     pathReducer
@@ -18,6 +19,7 @@ const defaultState = {
 
 export const configureStore = (initialState = {}) => {
     const reducer = combineReducers({
+        date: dateReducer,
         dirs: dirsReducer,
         files: filesReducer,
         path: pathReducer
