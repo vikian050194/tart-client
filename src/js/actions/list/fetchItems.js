@@ -8,10 +8,12 @@ const onFail = (error) => createAction(types.FETCH_LIST_ERROR)(error);
 export const fetchItemsAction = () => {
     return (dispatch, getState) => {
         const path = [...getState().path];
-        api.getItems(path)
+        const params = { ...getState().date.selected };
+        api.getItems(path, params)
             .then((data) => {
                 dispatch(onSuccess({
                     years: data.years,
+                    months: data.months,
                     dirs: data.dirs,
                     files: data.files,
                     path
@@ -28,6 +30,7 @@ export const updatePathAndFetchItemsAction = (dir) => {
             .then((data) => {
                 dispatch(onSuccess({
                     years: data.years,
+                    months: data.months,
                     dirs: data.dirs,
                     files: data.files,
                     path
@@ -44,6 +47,7 @@ export const undoPathAndFetchItemsAction = () => {
             .then((data) => {
                 dispatch(onSuccess({
                     years: data.years,
+                    months: data.months,
                     dirs: data.dirs,
                     files: data.files,
                     path
@@ -52,4 +56,3 @@ export const undoPathAndFetchItemsAction = () => {
             .catch(error => dispatch(onFail(error)));
     };
 };
-
