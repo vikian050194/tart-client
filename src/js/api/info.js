@@ -9,13 +9,15 @@ export const getItems = (path = [], params = {}) => {
     }
 
     // TODO move params handling to ajax.js
-    if (params) {
-        url = `${url}?`;
-    }
 
+    const pairs = [];
     for (const key in params) {
-        const values = params[key].map(v => `${key}=${v}`).join("&");
-        url = `${url}${values}`;
+        for (const value of params[key]) {
+            pairs.push(`${key}=${value}`);
+        }
+    }
+    if (pairs) {
+        url = `${url}?${pairs.join("&")}`;
     }
 
     return ajax.get(url);

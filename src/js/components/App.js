@@ -19,8 +19,8 @@ const App = ($root) => {
     const store = configureStore({ ...initialState, ...persistedState });
 
     store.subscribe(throttle(() => {
-        const { dirs, files, path } = store.getState();
-        LocalStorage.set("state", { dirs, files, path });
+        const { dirs, files, path, date } = store.getState();
+        LocalStorage.set("state", { dirs, files, path, date });
     }, 1000));
 
     const components = {

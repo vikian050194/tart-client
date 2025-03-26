@@ -14,6 +14,7 @@ export const fetchItemsAction = () => {
                 dispatch(onSuccess({
                     years: data.years,
                     months: data.months,
+                    days: data.days,
                     dirs: data.dirs,
                     files: data.files,
                     path
@@ -31,6 +32,7 @@ export const updatePathAndFetchItemsAction = (dir) => {
                 dispatch(onSuccess({
                     years: data.years,
                     months: data.months,
+                    days: data.days,
                     dirs: data.dirs,
                     files: data.files,
                     path
@@ -48,6 +50,7 @@ export const undoPathAndFetchItemsAction = () => {
                 dispatch(onSuccess({
                     years: data.years,
                     months: data.months,
+                    days: data.days,
                     dirs: data.dirs,
                     files: data.files,
                     path

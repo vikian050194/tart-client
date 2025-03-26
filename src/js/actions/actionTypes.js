@@ -9,6 +9,9 @@ export const YEAR_REMOVE = "YEAR_REMOVE";
 export const MONTH_ADD = "MONTH_ADD";
 export const MONTH_REMOVE = "MONTH_REMOVE";
 
+export const DAY_ADD = "DAY_ADD";
+export const DAY_REMOVE = "DAY_REMOVE";
+
 export const FIRST_IMAGE = "FIRST_IMAGE";
 export const PREVIOUS_IMAGE = "PREVIOUS_IMAGE";
 export const NEXT_IMAGE = "NEXT_IMAGE";

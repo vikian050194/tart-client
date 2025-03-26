@@ -26,7 +26,8 @@ export const dateReducer = (previousState = defaultState, action) => {
                 possible: {
                     ...previousState.possible,
                     years: [...action.value.years],
-                    months: [...action.value.months]
+                    months: [...action.value.months],
+                    days: [...action.value.days]
                 }
             };
         }
@@ -43,6 +44,13 @@ export const dateReducer = (previousState = defaultState, action) => {
         case types.MONTH_REMOVE: {
             const months = previousState.selected.months.filter(y => y !== action.value);
             return { ...previousState, selected: { ...previousState.selected, months } };
+        }
+        case types.DAY_ADD: {
+            return { ...previousState, selected: { ...previousState.selected, days: [...previousState.selected.days, action.value] } };
+        }
+        case types.DAY_REMOVE: {
+            const days = previousState.selected.days.filter(y => y !== action.value);
+            return { ...previousState, selected: { ...previousState.selected, days } };
         }
         default:
             return previousState;
