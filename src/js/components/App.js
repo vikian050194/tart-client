@@ -1,5 +1,5 @@
 import { Builder, replace, convert } from "fandom";
-import { Dates } from "./Dates";
+import { Year, Month, Day } from "./date";
 import { Directories } from "./Directories";
 import { Image } from "./Image";
 import { fetchItemsAction } from "actions";
@@ -24,7 +24,9 @@ const App = ($root) => {
     }, 1000));
 
     const components = {
-        date: new Dates(store.dispatch),
+        year: new Year(store.dispatch),
+        month: new Month(store.dispatch),
+        day: new Day(store.dispatch),
         dirs: new Directories(store.dispatch),
         navigation: new Navigation(store.dispatch),
         image: new Image(store.dispatch),
@@ -46,9 +48,9 @@ const App = ($root) => {
 
     builder.open("header");
     builder.div({ id: "dirs" }).close();
-    builder.just("hr");
-    builder.div({ id: "date" }).close();
-    builder.just("hr");
+    builder.div({ id: "year" }).close();
+    builder.div({ id: "month" }).close();
+    builder.div({ id: "day" }).close();
     builder.div({ id: "navigation" }).close();
     builder.close();
     builder.open("main");
