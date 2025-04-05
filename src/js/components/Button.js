@@ -1,21 +1,27 @@
 import { Builder } from "fandom";
 
-export class Item {
+export class Button {
     constructor() {
         this.builder = new Builder();
     }
 
     describe = ({
         value,
-        onClick
+        onClick,
+        isSelected,
+        isEnabled
     }) => {
         const clickButton = () => onClick(value);
-
-        this.builder.open("span");
-        this.builder.button({}, { click: clickButton }).text(value).close();
-        this.builder.close();
+        const classList = ["button"];
+        if (isSelected) {
+            classList.push("selected");
+        }
+        if (!isEnabled) {
+            classList.push("disabled");
+        }
+        this.builder.button({ classList }, { click: clickButton }).text(value).close();
         return this.builder.done();
     };
 }
 
-export default Item;
+export default Button;

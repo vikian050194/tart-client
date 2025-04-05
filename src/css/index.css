@@ -48,3 +48,15 @@ footer {
     display: flex;
     justify-content: space-between;
 }
+
+.button {
+    background: white;
+}
+
+.selected {
+    background: gray;
+}
+
+.disabled {
+    background: red;
+}

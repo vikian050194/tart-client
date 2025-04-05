@@ -20,15 +20,17 @@ export class Year {
 
         // this.builder.div().text("years").close();
 
-        this.builder.div();
+        // this.builder.div();
         for (let year of date.possible.years) {
-            const handler = date.selected.years.includes(year) ? onRemoveYear : onAddYear;
-            const props = { value: year, onClick: handler };
+            const isSelected = date.selected.years.includes(year);
+            const isEnabled = date.available.years.includes(year);
+            const handler = isSelected ? onRemoveYear : onAddYear;
+            const props = { value: year, onClick: handler, isSelected, isEnabled };
             const i = new Button();
             const im = i.describe(props);
             this.builder.push(im);
         }
-        this.builder.close();
+        // this.builder.close();
 
         return this.builder.done();
     }

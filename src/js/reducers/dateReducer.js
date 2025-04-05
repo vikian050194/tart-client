@@ -21,8 +21,24 @@ const defaultState = {
 export const dateReducer = (previousState = defaultState, action) => {
     switch (action.type) {
         case types.FETCH_LIST_SUCCESS: {
+            if (previousState.selected.years || previousState.selected.months || previousState.selected.days) {
+                return {
+                    ...previousState,
+                    available: {
+                        ...previousState.available,
+                        years: [...action.value.years],
+                        months: [...action.value.months],
+                        days: [...action.value.days]
+                    }
+                };
+            }
             return {
                 ...previousState,
+                available: {
+                    years: [],
+                    months: [],
+                    days: []
+                },
                 possible: {
                     ...previousState.possible,
                     years: [...action.value.years],

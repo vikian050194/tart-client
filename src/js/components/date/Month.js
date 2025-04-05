@@ -20,15 +20,17 @@ export class Month {
 
         // this.builder.div().text("months").close();
 
-        this.builder.div();
+        // this.builder.div();
         for (let month of date.possible.months) {
-            const handler = date.selected.months.includes(month) ? onRemoveMonth : onAddMonth;
-            const props = { value: month, onClick: handler };
+            const isSelected = date.selected.months.includes(month);
+            const isEnabled = date.available.months.includes(month);
+            const handler = isSelected ? onRemoveMonth : onAddMonth;
+            const props = { value: month, onClick: handler, isSelected, isEnabled };
             const i = new Button();
             const im = i.describe(props);
             this.builder.push(im);
         }
-        this.builder.close();
+        // this.builder.close();
 
         return this.builder.done();
     }

@@ -20,15 +20,17 @@ export class Day {
 
         // this.builder.div().text("days").close();
 
-        this.builder.div();
+        // this.builder.div();
         for (let day of date.possible.days) {
-            const handler = date.selected.days.includes(day) ? onRemoveDay : onAddDay;
-            const props = { value: day, onClick: handler };
+            const isSelected = date.selected.days.includes(day);
+            const isEnabled = date.available.days.includes(day);
+            const handler = isSelected ? onRemoveDay : onAddDay;
+            const props = { value: day, onClick: handler, isSelected, isEnabled };
             const i = new Button();
             const im = i.describe(props);
             this.builder.push(im);
         }
-        this.builder.close();
+        // this.builder.close();
 
         return this.builder.done();
     }
