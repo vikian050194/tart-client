@@ -1,6 +1,6 @@
 import { Builder } from "fandom";
 
-import Button from "../Button";
+import Toggle from "../Toggle";
 import {
     createAction,
     types,
@@ -26,7 +26,7 @@ export class Month {
             const isEnabled = date.available.months.includes(month);
             const handler = isSelected ? onRemoveMonth : onAddMonth;
             const props = { value: month, onClick: handler, isSelected, isEnabled };
-            const i = new Button();
+            const i = new Toggle();
             const im = i.describe(props);
             this.builder.push(im);
         }

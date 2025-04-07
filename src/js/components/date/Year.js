@@ -1,6 +1,6 @@
 import { Builder } from "fandom";
 
-import Button from "../Button";
+import Toggle from "../Toggle";
 import {
     createAction,
     types,
@@ -26,7 +26,7 @@ export class Year {
             const isEnabled = date.available.years.includes(year);
             const handler = isSelected ? onRemoveYear : onAddYear;
             const props = { value: year, onClick: handler, isSelected, isEnabled };
-            const i = new Button();
+            const i = new Toggle();
             const im = i.describe(props);
             this.builder.push(im);
         }

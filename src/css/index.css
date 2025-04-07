@@ -49,7 +49,11 @@ footer {
     justify-content: space-between;
 }
 
-.button {
+.button,
+.toggle,
+.counter {
+    border-radius: 3px;
+    border: 1px solid black;
     background: white;
 }
 

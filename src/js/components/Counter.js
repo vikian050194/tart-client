@@ -9,7 +9,8 @@ export class Counter {
     describe({ files }) {
         const index = files.items.length > 0 ? files.index + 1 : 0;
         const length = files.items.length;
-        this.builder.span().text(`${index}/${length}`).close();
+        const classList = ["counter"];
+        this.builder.span({ classList }).text(`${index}/${length}`).close();
         return this.builder.done();
     }
 }

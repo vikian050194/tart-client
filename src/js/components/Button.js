@@ -7,18 +7,10 @@ export class Button {
 
     describe = ({
         value,
-        onClick,
-        isSelected,
-        isEnabled
+        onClick
     }) => {
         const clickButton = () => onClick(value);
-        const classList = ["button"];
-        if (isSelected) {
-            classList.push("selected");
-        }
-        if (!isEnabled) {
-            classList.push("disabled");
-        }
+        const classList = ["toggle"];
         this.builder.button({ classList }, { click: clickButton }).text(value).close();
         return this.builder.done();
     };
