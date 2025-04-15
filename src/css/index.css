@@ -28,7 +28,7 @@ body {
 header {
     position: sticky;
     top: 0px;
-    padding: 16px 0;
+    padding: 8px 8px;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -43,7 +43,7 @@ main {
 footer {
     position: sticky;
     bottom: 0px;
-    padding: 8px 0;
+    padding: 8px 8px;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -53,8 +53,17 @@ footer {
 .toggle,
 .counter {
     border-radius: 3px;
-    border: 1px solid black;
     background: white;
+}
+
+.button,
+.toggle {
+    border: 1px solid black;
+
+}
+
+.counter {
+    padding: 1px 6px;
 }
 
 .selected {

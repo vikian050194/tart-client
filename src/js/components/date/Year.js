@@ -23,7 +23,7 @@ export class Year {
         // this.builder.div();
         for (let year of date.possible.years) {
             const isSelected = date.selected.years.includes(year);
-            const isEnabled = date.available.years.includes(year);
+            const isEnabled = date.available.years.length === 0 || date.available.years.includes(year);
             const handler = isSelected ? onRemoveYear : onAddYear;
             const props = { value: year, onClick: handler, isSelected, isEnabled };
             const i = new Toggle();

@@ -23,7 +23,7 @@ export class Month {
         // this.builder.div();
         for (let month of date.possible.months) {
             const isSelected = date.selected.months.includes(month);
-            const isEnabled = date.available.months.includes(month);
+            const isEnabled = date.available.months.length === 0 || date.available.months.includes(month);
             const handler = isSelected ? onRemoveMonth : onAddMonth;
             const props = { value: month, onClick: handler, isSelected, isEnabled };
             const i = new Toggle();

@@ -23,7 +23,7 @@ export class Day {
         // this.builder.div();
         for (let day of date.possible.days) {
             const isSelected = date.selected.days.includes(day);
-            const isEnabled = date.available.days.includes(day);
+            const isEnabled = date.available.days.length === 0 || date.available.days.includes(day);
             const handler = isSelected ? onRemoveDay : onAddDay;
             const props = { value: day, onClick: handler, isSelected, isEnabled };
             const i = new Toggle();
